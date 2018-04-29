@@ -8,6 +8,7 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
+
 }
 
 apply plugin: 'java'
@@ -25,7 +26,14 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-data-rest")
+	// JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Use MySQL Connector-J
+	compile 'mysql:mysql-connector-java'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compileOnly 'org.projectlombok:lombok:1.16.20'
+	compile ('org.modelmapper:modelmapper:1.1.0')
 }
