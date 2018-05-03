@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -48,5 +49,15 @@ public class CondominiumController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Long id) {
         condominiumService.delete(id);
+    }
+
+    @GetMapping("/findByStateName/{stateName}")
+    public List<Condominium> findByStateName(@PathVariable("stateName") String stateName) {
+        return condominiumService.findByStateName(stateName);
+    }
+
+    @GetMapping("/findByCityName/{cityName}")
+    public List<Condominium> findByCityName(@PathVariable("cityName") String cityName) {
+        return condominiumService.findByCityName(cityName);
     }
 }

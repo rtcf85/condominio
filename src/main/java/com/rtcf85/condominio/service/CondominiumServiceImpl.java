@@ -5,6 +5,7 @@ import com.rtcf85.condominio.repository.CondominiumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,5 +32,15 @@ public class CondominiumServiceImpl implements CondominiumService {
     @Override
     public void delete(Long id) {
         condominiumRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Condominium> findByStateName(String stateName) {
+        return condominiumRepository.findByAddressCityStateName(stateName);
+    }
+
+    @Override
+    public List<Condominium> findByCityName(String cityName) {
+        return condominiumRepository.findByAddressCityName(cityName);
     }
 }
